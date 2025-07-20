@@ -1,0 +1,134 @@
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5">
+      <div class="card border-0 shadow-lg animate__animated animate__fadeInUp">
+        <div class="card-header bg-success text-white text-center py-4">
+          <h3 class="mb-0">
+            <i class="bi bi-person-plus me-2"></i>Join KKH Store
+          </h3>
+          <p class="mb-0 mt-2">Create your account and start shopping</p>
+        </div>
+        <div class="card-body p-4">
+            @if (errorMessage) {
+            <div class="alert alert-danger animate__animated animate__shakeX" role="alert">
+              <i class="bi bi-exclamation-triangle me-2"></i>{{ errorMessage }}
+              </div>
+            }
+
+          <form (ngSubmit)="onSubmit()" #registerForm="ngForm">
+            <div class="mb-3">
+              <label for="name" class="form-label fw-bold">
+                <i class="bi bi-person me-2"></i>Full Name
+              </label>
+              <input 
+                type="text" 
+                class="form-control form-control-lg" 
+                id="name" 
+                [(ngModel)]="registerData.name"
+                name="name"
+                required
+                placeholder="Enter your full name">
+            </div>
+
+            <div class="mb-3">
+              <label for="email" class="form-label fw-bold">
+                <i class="bi bi-envelope me-2"></i>Email Address
+              </label>
+              <input 
+                type="email" 
+                class="form-control form-control-lg" 
+                id="email" 
+                [(ngModel)]="registerData.email"
+                name="email"
+                required
+                email
+                placeholder="Enter your email">
+            </div>
+
+            <div class="mb-3">
+              <label for="password" class="form-label fw-bold">
+                <i class="bi bi-lock me-2"></i>Password
+              </label>
+              <input 
+                type="password" 
+                class="form-control form-control-lg" 
+                id="password" 
+                [(ngModel)]="registerData.password"
+                name="password"
+                required
+                minlength="6"
+                placeholder="Enter your password">
+            </div>
+
+            <div class="mb-4">
+              <label for="confirmPassword" class="form-label fw-bold">
+                <i class="bi bi-lock-fill me-2"></i>Confirm Password
+              </label>
+              <input 
+                type="password" 
+                class="form-control form-control-lg" 
+                id="confirmPassword" 
+                [(ngModel)]="confirmPassword"
+                name="confirmPassword"
+                required
+                placeholder="Confirm your password">
+            </div>
+
+            <button 
+              type="submit" 
+              class="btn btn-success btn-lg w-100 mb-3"
+              [disabled]="isLoading || !registerForm.form.valid || registerData.password !== confirmPassword">
+              @if (isLoading) {
+                <span class="loading-spinner me-2"></span>Creating Account...
+              } @else {
+                <i class="bi bi-person-plus me-2"></i>Create Account
+              }
+            </button>
+
+            <div class="text-center">
+              <p class="mb-0">
+                Already have an account? 
+                <a routerLink="/login" class="text-decoration-none fw-bold">Sign in here</a>
+              </p>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Benefits -->
+      <div class="card border-0 shadow-sm mt-4">
+        <div class="card-body">
+          <h6 class="card-title text-muted mb-3">
+            <i class="bi bi-star me-2"></i>Why Join KKH Store?
+          </h6>
+          <div class="row g-3">
+            <div class="col-6">
+              <div class="d-flex align-items-center">
+                <i class="bi bi-check-circle text-success me-2"></i>
+                <small>Fast Delivery</small>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="d-flex align-items-center">
+                <i class="bi bi-check-circle text-success me-2"></i>
+                <small>Secure Shopping</small>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="d-flex align-items-center">
+                <i class="bi bi-check-circle text-success me-2"></i>
+                <small>24/7 Support</small>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="d-flex align-items-center">
+                <i class="bi bi-check-circle text-success me-2"></i>
+                <small>Best Prices</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
