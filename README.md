@@ -13,7 +13,7 @@ Full-stack e-commerce application with Angular 17 frontend and Node.js/Express b
 ```bash
 cd backend
 npm install
-npm run dev
+nodemon
 ```
 
 ### Frontend Setup
